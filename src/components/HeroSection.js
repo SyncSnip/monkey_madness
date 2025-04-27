@@ -101,13 +101,13 @@ const HeroSection = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <div className="relative min-h-screen bg-[#f6f7f7]">
-        <nav className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md shadow-sm">
+      <div className="relative min-h-screen bg-[#fed231]">
+        <nav className="fixed top-0 left-0 right-0 z-40 bg-white/20 backdrop-blur-md shadow-sm">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-20">
               <Link href="/">
                 <Image
-                  src="/navLogo.png"
+                  src="/monkey.png"
                   width={120}
                   height={40}
                   className="md:w-32 w-24" // Fixed Tailwind classes
@@ -146,7 +146,7 @@ const HeroSection = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="fixed top-0 right-0 h-full md:w-1/2 w-full bg-[#f6f7f7] text-gray-700 z-50 shadow-2xl"
+              className="fixed top-0 right-0 h-full w-[80%] md:w-1/3  bg-[#fed231] text-gray-700 z-50 rounded-l-[100px] shadow-2xl"
               initial="closed"
               animate="open"
               exit="closed"
@@ -160,7 +160,7 @@ const HeroSection = () => {
                         0{i + 1}
                       </span>
                       <span
-                        className="md:text-2xl text-xl font-semibold hover:text-gray-300 transition-colors cursor-pointer"
+                        className="md:text-2xl text-xl font-semibold hover:text-white transition-colors cursor-pointer"
                         onClick={() => openMenu()}
                       >
                         {link.name}
@@ -192,41 +192,16 @@ const HeroSection = () => {
             </motion.div>
           )}
         </AnimatePresence>
-        {/* Left Content Panel */}
-        <AnimatePresence>
-          {isContentOpen && (
-            <motion.div
-              className="fixed top-0 left-0 h-full w-1/2 md:block hidden bg-gradient-to-b bg-white text-gray-800 z-50 shadow-2xl"
-              initial="closed"
-              animate="open"
-              exit="closed"
-              variants={contentVariants}
-            >
-              <div className="flex flex-col items-center justify-center h-full p-6">
-                <img
-                  src="/logoWhiteHeaven.png"
-                  className="w-[50%]"
-                  alt="Logo"
-                />
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+ 
         {/* Hero Section */}
         <div className="flex items-center justify-center min-h-screen">
           <div className="flex flex-col items-center justify-center h-full p-6">
             <img
-              src="/logoWhiteHeaven.png"
-              className="md:w-[30%] "
+              src="/monkey.png"
+              className="md:w-[40%] "
               alt="Logo"
             />
-            <span className="text-center  w-[80%] md:w-[50%] mt-4 text-sm md:text-md text-slate-600 opacity-80">
-              White Heaven Entertainments Pvt. Ltd., a premier artist curation
-              and programming company dedicated to delivering unforgettable
-              entertainment experiences since 2013. Our mission is to curate
-              exceptional artists and create immersive events that captivate
-              audiences worldwide.
-            </span>
+          
           </div>
         </div>
       </div>
