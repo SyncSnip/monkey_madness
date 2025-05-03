@@ -88,7 +88,7 @@ const Loader = () => {
           transition={{ duration: 0.3 }}
         >
           <img
-            src="/logoWhiteHeaven.png"
+            src="/monkeyLogo.png"
             className="h-16 md:h-20" // Much larger logo
             alt="White Heaven Logo"
           />
