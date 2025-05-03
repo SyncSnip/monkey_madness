@@ -226,25 +226,31 @@ const Loader = () => (
     exit={{ opacity: 0 }}
     transition={{ duration: 0.5 }}
   >
-    <motion.div
-      animate={{
-        y: [0, -20, 0],
-        rotate: [0, 10, -10, 0],
-      }}
-      transition={{
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    >
-      <Image
-        src="/monkey.png"
-        width={120}
-        height={120}
-        alt="Loading Monkey"
-        className="w-24 h-24"
+    <div className="relative flex flex-col items-center">
+      <motion.div
+        className="w-24 h-24 border-4 border-gray-900 border-t-transparent rounded-full animate-spin"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
       />
-    </motion.div>
+      <motion.div
+        className="absolute"
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{
+          duration: 0.5,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+      >
+        <Image
+          src="/monkeyLogo.png"
+          width={80}
+          height={80}
+          alt="Loading Monkey"
+          className="w-20 h-20"
+        />
+      </motion.div>
+    </div>
     <motion.div
       className="absolute bottom-10 text-gray-800 font-medium"
       initial={{ opacity: 0 }}
@@ -474,8 +480,6 @@ const HeroSection = ({ setActiveSection, activeSection }) => {
         className="relative min-h-screen bg-gradient-to-b from-[#fed231] to-[#f7c02a] pt-20 overflow-hidden"
       >
         {/* Monkey character animation */}
-    
-
         <div className="container mx-auto flex flex-col items-center justify-center min-h-[90vh] relative z-10 px-4">
           <motion.div
             className="text-center max-w-4xl"
@@ -483,7 +487,7 @@ const HeroSection = ({ setActiveSection, activeSection }) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
           >
-            <div className="flex flex-col items-center justify-center h-full p-6">
+            <div className="flex flex-col items-center justify-center h-full">
               <Image
                 src="/monkey.png"
                 width={400}
@@ -492,7 +496,6 @@ const HeroSection = ({ setActiveSection, activeSection }) => {
                 alt="Logo"
               />
             </div>
-
             <motion.h1
               className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6"
               initial={{ y: 30, opacity: 0 }}
