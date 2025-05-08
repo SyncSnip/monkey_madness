@@ -123,7 +123,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
               width={100}
               height={100}
                 src="/monkeyLogo.png"
-                className="h-16 md:h-16" // Much larger logo
+                className="h-16 md:h-16 w-auto" // Much larger logo
                 alt="White Heaven Logo"
               />
             </motion.div>
