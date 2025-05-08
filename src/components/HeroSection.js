@@ -87,7 +87,6 @@ const Navbar = ({ activeSection, setActiveSection }) => {
     }
   };
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -101,14 +100,14 @@ const Navbar = ({ activeSection, setActiveSection }) => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white shadow-lg py-2" : "bg-transparent py-4"
+        scrolled ? "bg-white shadow-lg py-2" : "bg-transparent py-3 sm:py-4"
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-12 sm:h-16">
           <Link
             href="#home"
             onClick={() => handleNavClick("home")}
@@ -120,16 +119,15 @@ const Navbar = ({ activeSection, setActiveSection }) => {
               transition={{ type: "spring" }}
             >
               <Image
-              width={100}
-              height={100}
+                width={100}
+                height={100}
                 src="/monkeyLogo.png"
-                className="h-16 md:h-16" // Much larger logo
+                className="h-12 w-auto sm:h-14 md:h-16"
                 alt="White Heaven Logo"
               />
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation with creative indicators */}
           <div className="hidden md:flex space-x-1 relative">
             {navLinks.map((link) => (
               <motion.div
@@ -141,7 +139,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 <Link
                   href={link.href}
                   onClick={() => handleNavClick(link.section)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${
                     activeSection === link.section
                       ? "text-gray-900 bg-[#fed231]"
                       : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
@@ -149,18 +147,10 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 >
                   {link.name}
                 </Link>
-                {/* {activeSection === link.section && (
-                  <motion.div
-                    layoutId="activeNavItem"
-                    className="absolute bottom-0 left-0 right-0 h-1 bg-gray-900 rounded-full"
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )} */}
               </motion.div>
             ))}
           </div>
 
-          {/* Animated Mobile Menu Button */}
           <motion.button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden text-gray-800 p-2 rounded-md focus:outline-none"
@@ -169,7 +159,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             whileTap={{ scale: 0.9 }}
           >
             <svg
-              className="h-8 w-8"
+              className="h-6 w-6 sm:h-8 sm:w-8"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -196,7 +186,6 @@ const Navbar = ({ activeSection, setActiveSection }) => {
         </div>
       </div>
 
-      {/* Animated Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -217,7 +206,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                   <Link
                     href={link.href}
                     onClick={() => handleNavClick(link.section)}
-                    className={`block px-4 py-3 rounded-md text-base font-medium ${
+                    className={`block px-4 py-3 rounded-md text-sm sm:text-base font-medium ${
                       activeSection === link.section
                         ? "bg-[#fed231] text-gray-900"
                         : "text-gray-700 hover:bg-gray-100"
@@ -281,7 +270,7 @@ const HeroSection = ({ setActiveSection, activeSection }) => {
                 src="/monkey.png"
                 width={400}
                 height={400}
-                className="w-150"
+                className="w-150 h-auto"
                 alt="Logo"
               />
             </div>
@@ -441,8 +430,8 @@ const AboutSection = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
@@ -477,8 +466,8 @@ const AboutSection = () => {
 
           <motion.div
             className="grid gap-6"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
@@ -998,8 +987,8 @@ const WhyChooseUsSection = () => {
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <motion.div
             className="bg-[#fed231] rounded-3xl p-8 shadow-xl"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
@@ -1030,8 +1019,8 @@ const WhyChooseUsSection = () => {
 
           <motion.div
             className="bg-gray-900 rounded-3xl p-8 shadow-xl text-white"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
@@ -1060,8 +1049,8 @@ const WhyChooseUsSection = () => {
                 <motion.div
                   key={i}
                   className="flex items-center"
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * i }}
                   viewport={{ once: true }}
                 >
@@ -1179,8 +1168,8 @@ const ContactSection = () => {
         <div className="grid md:grid-cols-2 gap-12">
           <motion.div
             className="bg-gray-800 rounded-3xl p-8 shadow-xl"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
@@ -1254,7 +1243,7 @@ const ContactSection = () => {
 
           <motion.div
             className="bg-gray-800 rounded-3xl p-8 shadow-xl"
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
