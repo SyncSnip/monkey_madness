@@ -1,216 +1,3 @@
-// "use client";
-// import { useEffect, useState } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
-// import Link from "next/link";
-// import Image from "next/image";
-// import Loader from "./Loader";
-
-// const HeroSection = () => {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-//   const [isContentOpen, setIsContentOpen] = useState(false);
-//   const [isLoading, setIsLoading] = useState(true);
-
-//   const navLinks = [
-//     { name: "Home", href: "/" },
-//     { name: "About", href: "/about" },
-//     { name: "Talent", href: "/talent" },
-//     { name: "Brands", href: "/brands" },
-//     { name: "Strategic Advisory", href: "/strategicadvisory" },
-//     { name: "Careers", href: "/careers" },
-//     { name: "NewsKiosk", href: "/news" },
-//     { name: "CSR", href: "/csr" },
-//     { name: "Contact", href: "/contact" }, // Fixed capitalization
-//   ];
-
-//   // Animation variants for right navbara
-//   const menuVariants = {
-//     closed: {
-//       x: "100%", // Start off-screen to the right
-//       opacity: 0,
-//       transition: {
-//         duration: 0.5,
-//         ease: "easeInOut",
-//       },
-//     },
-//     open: {
-//       x: 0, // Slide in to position
-//       opacity: 1,
-//       transition: {
-//         duration: 0.5,
-//         ease: "easeInOut",
-//         staggerChildren: 0.1,
-//       },
-//     },
-//   };
-
-//   // Animation variants for left content panel
-//   const contentVariants = {
-//     closed: {
-//       x: "-100%", // Start off-screen to the left
-//       opacity: 0,
-//       transition: {
-//         duration: 0.5,
-//         ease: "easeInOut",
-//       },
-//     },
-//     open: {
-//       x: 0, // Slide in to position
-//       opacity: 1,
-//       transition: {
-//         duration: 0.5,
-//         ease: "easeInOut",
-//       },
-//     },
-//   };
-
-//   // Animation variants for individual nav links
-//   const linkVariants = {
-//     closed: { x: 50, opacity: 0 },
-//     open: { x: 0, opacity: 1 },
-//   };
-
-//   // Animation variants for hero image
-//   const imageVariants = {
-//     initial: { opacity: 0.3, scale: 0.8 },
-//     animate: {
-//       opacity: 0.9,
-//       scale: 1,
-//       transition: {
-//         duration: 1.5,
-//         ease: "easeOut",
-//         repeat: Infinity,
-//         repeatType: "reverse",
-//       },
-//     },
-//   };
-
-//   useEffect(() => {
-//     const timer = setTimeout(() => {
-//       setIsLoading(false);
-//     }, 900);
-//     return () => clearTimeout(timer);
-//   }, []);
-
-//   const openMenu = () => {
-//     setIsMenuOpen(!isMenuOpen);
-//     if (window.innerWidth >= 768) {
-//       setIsContentOpen(!isContentOpen);
-//     }
-//   };
-
-//   return (
-//     <>
-//       {isLoading && <Loader />}
-//       <div className="relative min-h-screen bg-[#fed231]">
-//         <nav className="fixed top-0 left-0 right-0 z-40 bg-white/20 backdrop-blur-md shadow-sm">
-//           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//             <div className="flex justify-between items-center h-20">
-//               <Link href="/">
-//                 <Image
-//                   src="/monkey.png"
-//                   width={120}
-//                   height={40}
-//                   className="md:w-32 w-24" // Fixed Tailwind classes
-//                   alt="Logo"
-//                 />
-//               </Link>
-//               <button
-//                 onClick={openMenu}
-//                 aria-label="Toggle menu"
-//                 aria-expanded={isMenuOpen}
-//                 className="text-gray-800 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
-//               >
-//                 <svg
-//                   className="h-8 w-8"
-//                   fill="none"
-//                   stroke="currentColor"
-//                   viewBox="0 0 24 24"
-//                   xmlns="http://www.w3.org/2000/svg"
-//                 >
-//                   <path
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth="2"
-//                     d={
-//                       isMenuOpen
-//                         ? "M6 18L18 6M6 6l12 12"
-//                         : "M4 6h16M4 12h16M4 18h16"
-//                     }
-//                   />
-//                 </svg>
-//               </button>
-//             </div>
-//           </div>
-//         </nav>
-//         {/* Right Sidebar Menu */}
-//         <AnimatePresence>
-//           {isMenuOpen && (
-//             <motion.div
-//               className="fixed top-0 right-0 h-full w-[80%] md:w-1/3  bg-[#fed231] text-gray-700 z-50 rounded-l-[100px] shadow-2xl"
-//               initial="closed"
-//               animate="open"
-//               exit="closed"
-//               variants={menuVariants}
-//             >
-//               <div className="flex flex-col md:ml-20 ml-5 justify-center h-full space-y-8">
-//                 {navLinks.map((link, i) => (
-//                   <motion.div key={link.name} variants={linkVariants}>
-//                     <Link href={link.href} className="space-x-4">
-//                       <span className=" py-2.5 px-4 rounded-full text-xs text-gray-700 opacity-35">
-//                         0{i + 1}
-//                       </span>
-//                       <span
-//                         className="md:text-2xl text-xl font-semibold hover:text-white transition-colors cursor-pointer"
-//                         onClick={() => openMenu()}
-//                       >
-//                         {link.name}
-//                       </span>
-//                     </Link>
-//                   </motion.div>
-//                 ))}
-//               </div>
-//               {/* Close Button */}
-//               <button
-//                 onClick={() => openMenu()}
-//                 className="absolute top-8 right-8 text-gray-700 hover:text-gray-900 cursor-pointer"
-//               >
-//                 <svg
-//                   className="h-10 w-10"
-//                   fill="none"
-//                   stroke="currentColor"
-//                   viewBox="0 0 24 24"
-//                   xmlns="http://www.w3.org/2000/svg"
-//                 >
-//                   <path
-//                     strokeLinecap="round"
-//                     strokeLinejoin="round"
-//                     strokeWidth="2"
-//                     d="M6 18L18 6M6 6l12 12"
-//                   />
-//                 </svg>
-//               </button>
-//             </motion.div>
-//           )}
-//         </AnimatePresence>
-
-//         {/* Hero Section */}
-//         <div className="flex items-center justify-center min-h-screen">
-//           <div className="flex flex-col items-center justify-center h-full p-6">
-//             <img
-//               src="/monkey.png"
-//               className="md:w-[40%] "
-//               alt="Logo"
-//             />
-
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default HeroSection;
-
 "use client";
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -332,7 +119,9 @@ const Navbar = ({ activeSection, setActiveSection }) => {
               whileTap={{ scale: 0.9 }}
               transition={{ type: "spring" }}
             >
-              <img
+              <Image
+              width={100}
+              height={100}
                 src="/monkeyLogo.png"
                 className="h-16 md:h-16" // Much larger logo
                 alt="White Heaven Logo"
@@ -517,7 +306,7 @@ const HeroSection = ({ setActiveSection, activeSection }) => {
               >
                 Monkey Business
               </motion.span>
-              <span className="block">Into Brand Success</span>
+              <span className="block">Into Brand Business</span>
             </motion.h1>
 
             <motion.p
@@ -526,8 +315,8 @@ const HeroSection = ({ setActiveSection, activeSection }) => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.8 }}
             >
-              We swing through the digital jungle to bring your brand to the
-              top!
+              Strategic, Creative, and Results-Oriented Brand Management and
+              Marketing Solutions.
             </motion.p>
 
             <motion.div
@@ -540,7 +329,7 @@ const HeroSection = ({ setActiveSection, activeSection }) => {
                 onClick={() => setActiveSection("contact")}
                 className="inline-flex items-center bg-gray-900 text-[#fed231] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-all group"
               >
-                Let's Go Bananas!
+                Let&apos;s Go Bananas!
                 <motion.span
                   className="ml-2 inline-block group-hover:translate-x-2 transition-transform"
                   animate={{
@@ -602,12 +391,12 @@ const AboutSection = () => {
     },
     {
       title: "Mission",
-      description: "To make your brand the king of the digital jungle.",
+      description: "To empower brands with tailored marketing and branding solutions that drive measurable growth and meaningful audience connections",
       icon: "🎯",
     },
     {
       title: "Vision",
-      description: "A world where every brand climbs to the top of its tree.",
+      description: "To be a leading force in redefining brand growth and audience engagement across industries",
       icon: "🔭",
     },
   ];
@@ -638,8 +427,15 @@ const AboutSection = () => {
             transition={{ delay: 0.4 }}
             viewport={{ once: true }}
           >
-            We're not your average marketing agency. We bring fun, creativity,
-            and serious results to the table.
+            Monkey Madness Pvt Ltd was founded with a vision to empower
+            businesses with strategic marketing and brand solutions tailored to
+            their unique needs. Our focus is on creativity, innovation, and
+            measurable outcomes, ensuring every brand we work with stands out
+            and grows sustainably in a dynamic market environment.
+             At Monkey
+            Madness, we believe in meaningful partnerships, fostering
+            innovation, and delivering real value through every campaign and
+            strategy
           </motion.p>
         </motion.div>
 
@@ -941,7 +737,7 @@ const WorkSection = () => {
             transition={{ delay: 0.4 }}
             viewport={{ once: true }}
           >
-            See how we've helped brands swing to new heights.
+            See how we&apos;ve helped brands swing to new heights.
           </motion.p>
         </motion.div>
 
@@ -1194,7 +990,8 @@ const WhyChooseUsSection = () => {
             transition={{ delay: 0.4 }}
             viewport={{ once: true }}
           >
-            We're not just another agency - we're your partners in growth.
+            We&apos;re not just another agency - we&apos;re your partners in
+            growth.
           </motion.p>
         </motion.div>
 
@@ -1364,7 +1161,8 @@ const ContactSection = () => {
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Let's <span className="text-[#fed231]">Go Bananas</span> Together!
+            Let&apos;s <span className="text-[#fed231]">Go Bananas</span>{" "}
+            Together!
           </motion.h2>
           <motion.p
             className="text-xl text-gray-300 max-w-3xl mx-auto"
