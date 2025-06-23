@@ -523,49 +523,49 @@ const ServicesSection = () => {
       title: "On-Ground Brand Activations",
       description:
         "Immersive, high-impact experiences that connect your brand with real audiences in real time.",
-      icon: "🦧",
+      icon: "🎯",
       color: "bg-purple-100",
     },
     {
       title: "Custom Campaigns",
       description:
         "Tailor-made physical marketing campaigns designed to spark engagement and drive results.",
-      icon: "🌐",
+      icon: "🛠️",
       color: "bg-blue-100",
     },
     {
       title: "Experiential Pop-Ups",
       description:
         "Interactive setups that bring your brand story to life — fun, bold, and built for buzz.",
-      icon: "🎨",
+      icon: "🎪",
       color: "bg-pink-100",
     },
     {
       title: "Brand Integrations",
       description:
         "Seamless placement of your brand across event properties, ensuring visibility and relevance.",
-      icon: "✍️",
+      icon: "🔗",
       color: "bg-green-100",
     },
     {
       title: "Artist Endorsements",
       description:
         "Get the right voices behind your brand with curated collaborations and influencer tie-ups.",
-      icon: "📱",
+      icon: "🎤",
       color: "bg-yellow-100",
     },
     {
       title: "Digital Exposure and Social Buzz",
       description:
         "Strategic collaborations that put your brand center stage at youth-driven events and cultural hotspots.",
-      icon: "📊",
+      icon: "📣",
       color: "bg-red-100",
     },
     {
       title: "Data & Impact Reporting",
       description:
         "Post-activation insights and analytics to measure performance, reach, and ROI.",
-      icon: "📊",
+      icon: "📈",
       color: "bg-purple-100",
     },
   ];
