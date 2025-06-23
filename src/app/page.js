@@ -746,7 +746,7 @@ const ContactSection = () => {
               <div className="flex space-x-6 items-center">
                 <motion.a
                   href="https://www.linkedin.com/company/monkey-madness-pvt-ltd/"
-                  className="flex items-center space-x-2 text-2xl text-blue-700 hover:underline"
+                  className="flex items-center space-x-2 text-2xl text-gray-400 hover:underline"
                   whileHover={{ y: -5, rotate: 2 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: 20 }}
@@ -893,7 +893,7 @@ const Footer = () => {
             />
           </div>
           <p className="text-gray-400 mb-6">
-            Turning monkey business into brand success since 2023.
+            From Mad Ideas to Serious Impacts
           </p>
         </motion.div>
 
