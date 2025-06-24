@@ -321,27 +321,7 @@ const HeroSection = ({ setActiveSection, activeSection }) => {
 
 // Enhanced About Section with creative layout
 const AboutSection = () => {
-  const features = [
-    {
-      title: "The Brains Behind the Brand Buzz",
-      description:
-        "Started in a jungle, now swinging through the digital world.",
-      icon: "📖",
-    },
-    {
-      title: "Mission",
-      description:
-        "To empower brands with tailored marketing and branding solutions that drive measurable growth and meaningful audience connections",
-      icon: "🎯",
-    },
-    {
-      title: "Vision",
-      description:
-        "To be a leading force in redefining brand growth and audience engagement across industries",
-      icon: "🔭",
-    },
-  ];
-
+  
   return (
     <section id="about" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -402,12 +382,20 @@ const AboutSection = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
           <motion.div
-            initial={{ opacity: 0, y: -50 }}
+            className="grid gap-6"
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="bg-[#fed231] rounded-3xl p-8 shadow-xl relative overflow-hidden">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+              className="bg-[#fed231] rounded-3xl p-8 shadow-xl relative overflow-hidden"
+            >
               <div className="absolute -top-10 -right-10 text-9xl opacity-10">
                 🐒
               </div>
@@ -433,7 +421,7 @@ const AboutSection = () => {
                   </motion.span>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -443,7 +431,6 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            {/* {features.map((feature, i) => ( */}
             <motion.div
               className="bg-gray-50 p-6 rounded-2xl shadow-md border-l-4 border-[#fed231]"
               initial={{ opacity: 0, y: 20 }}
@@ -481,7 +468,6 @@ const AboutSection = () => {
                 </div>
               </div>
             </motion.div>
-            {/* ))} */}
           </motion.div>
         </div>
         <motion.div
@@ -699,7 +685,7 @@ const ContactSection = () => {
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Together! Let&apos;s Make Some{" "}
+             Let&apos;s Make Some{" "}
             <span className="text-[#fed231]">Madness</span> Together
           </motion.h2>
         </motion.div>
@@ -735,7 +721,7 @@ const ContactSection = () => {
                 <div>
                   <h4 className="text-lg font-bold">Office</h4>
                   <p className="text-gray-300">
-                    A5, Grovy Optiva, Noida – 68, Uttar Pradesh - 201301, India
+                    A5, Grovy Optiva, Noida - 68, Uttar Pradesh - 201301, India
                   </p>
                 </div>
               </div>
@@ -744,21 +730,14 @@ const ContactSection = () => {
             <div className="mt-12">
               <h4 className="text-lg font-bold mb-4">Follow Us at :</h4>
               <div className="flex space-x-6 items-center">
-                <motion.a
+                <a
                   href="https://www.linkedin.com/company/monkey-madness-pvt-ltd/"
                   className="flex items-center space-x-2 text-2xl text-gray-400 hover:underline"
-                  whileHover={{ y: -5, rotate: 2 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                  viewport={{ once: true }}
                   target="_blank"
-                  rel="noopener noreferrer"
                 >
                   <FaLinkedin />
                   <span className="text-base font-medium">LinkedIn</span>
-                </motion.a>
+                </a>
               </div>
             </div>
           </motion.div>
@@ -885,11 +864,11 @@ const Footer = () => {
         >
           <div className="flex justify-center mb-6">
             <Image
-              src="/monkey.png"
+              src="/monkeymadnessyellow.png"
               width={180}
               height={40}
               alt="Monkey Madness Logo"
-              className="filter invert"
+              // className="filter invert"
             />
           </div>
           <p className="text-gray-400 mb-6">
